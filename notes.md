@@ -97,6 +97,8 @@ removeFromStack() {
 module.exports = Stack
 ```
 
+![](./assets/images/stack.png)
+
 ---
 
 ### Queues
@@ -129,6 +131,8 @@ removeFromQueue() {
 module.exports = Queue;
 ```
 
+![](./assets/images/queue.png)
+
 ---
 
 ### Callback Queue
@@ -139,6 +143,8 @@ module.exports = Queue;
 - This is used a lot in React.
 - `setTimeout()` stores callbacks.
 - `fetch()` goes in a queue?
+
+![](./assets/images/callback-queue.png)
 
 ---
 
