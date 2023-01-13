@@ -149,7 +149,106 @@ module.exports = Queue;
 ---
 
 ## 17.2: Functional Programming in JavaScript
-- 
+
+### Higher Order Functions
+- Functions that accepts functions as a parameter.
+- Or they can return functions.
+- What’s a lambda?
+- Very popular these days, apparently.
+- JS is one of the first languages to popularize this.
+- For example, I can use map as a higher-order function, pass another function to it, and have it apply map to the function.
+- When you pass a function, it’s usually called a callback.
+
+```
+function findAverage(accumulator, currentValue, index, array) {
+	const newSum = accumulator + currentValue
+	if (index === array.length-1) {
+		const average = newSum / array.length
+		return average
+	}
+	return newSum
+}
+``` 
+
+---
+
+### Closures
+- Closures are stacking.
+- Not really clear what closures are.
+
+```
+function bankAccount() {
+	const checking = 400
+	const savings = 1000
+	return {
+		displayFunds: () => {
+			console.log(`You have $${checking} in your checking account and $${savings} in your savings account.`)
+		}
+		const totalFunds = checking + savings
+		return () => {
+			console.log(`Your total funds are ${totalFunds}.`)
+		}
+	}
+}
+
+```
+
+- Closures make use of scope.
+- It’s a collection of scopes, or a union of it.
+- Closures are just a stack of scopes.
+- Still confusing!
+
+---
+
+### Factory Functions
+- Makes use of higher-level functions and closures.
+- Like classes, and are potentially more flexible than classes.
+
+```
+function createUser(name, age, city) {
+
+	const user = {
+		name,
+		age,
+		city,
+	}
+
+	return {
+		introduceSelf: () => {
+			return console.log(`Hi, I’m ${user.name}.`)
+		},
+		location: () => {
+			return console.log(`I live in ${user.city}.`)
+		},
+		// ... Can add a bunch more.
+	}
+	
+}
+```
+
+---
+
+### Factory vs Constructor
+- For factory functions, it’s clear what each does.
+- Constructors, you sometimes have to look at the thing that it’s extending (sub-class).
+- Factory functions are like legos, where you take different object to build something.
+- With constructors, there’s only one parent (no multiple inheritance). It’s available in other languages. Factory functions give us a way to inherit from multiple things.
+- Once you get the hang of it, it’s easy to go back and forth between factory functions and classes.
+- If you learn TypeScript, classes are much more powerful, and the direction the industry is moving.
+
+```
+const phoneCall = (state) => {
+	call: () => console.log(`${state.name}’s Phone: ${state.ringTone}`),
+}
+// ...
+```
+
+---
+
+### Event Delegation Handling
+- You can add an event handler to a container that contains many elements.
+- Any time you click something, it bubbles up each parent.
+- You add it to a button to catch the bubbling from elements.
 
 ---
 
